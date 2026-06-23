@@ -1,0 +1,56 @@
+{
+  "truck_id": "TRK-052",
+  "priority": "high",
+  "ramp_status": [
+    {
+      "ramp": "R01",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R02",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R03",
+      "status": "occupied",
+      "queue_length": 47
+    },
+    {
+      "ramp": "R04",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R05",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R06",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R07",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R08",
+      "status": "free",
+      "queue_length": 0
+    }
+  ],
+  "documentation": [
+    {
+      "type": "photo",
+      "url": "/assets/damaged_parcels/damaged/d19795_jpg.rf.cfe418fd0d3d16abf2b3c0a2e3ff06b1.jpg"
+    },
+    {
+      "type": "email",
+      "text": "Subject: Avis de livraison – VanEck Bitcoin ETF\n\nBonjour à tous,\n\nDe la part de VanEck Bitcoin ETF, nous vous informons d'une livraison de 31 colis de marchandise standard aujourd'hui.\nUrgent! Dégâts importants sur la cargaison.\n\nIl y a une statue de Benjamin Franklin dans Paris qui est une réplique exacte de la statue de Philadelphia.\n\nCordialement\nVanEck Bitcoin ETF"
+    }
+  ]
+}

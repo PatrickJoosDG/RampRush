@@ -1,0 +1,56 @@
+{
+  "truck_id": "TRK-073",
+  "priority": "normal",
+  "ramp_status": [
+    {
+      "ramp": "R01",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R02",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R03",
+      "status": "occupied",
+      "queue_length": 67
+    },
+    {
+      "ramp": "R04",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R05",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R06",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R07",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R08",
+      "status": "free",
+      "queue_length": 0
+    }
+  ],
+  "documentation": [
+    {
+      "type": "photo",
+      "url": "/assets/damaged_parcels/undamaged/1759_jpg.rf.9df8182fed31aba17af5ce02e2f812d4.jpg"
+    },
+    {
+      "type": "email",
+      "text": "Subject: Avviso di consegna – Tractor Supply\n\nCiao a tutti,\n\nVi comunichiamo che Tractor Supply consegnerà 46 colli di merce deperibile.\n\nMi sto divertendo molto con il mio cellulare, non vedo l'ora di prendere un caffè.\n\nCordiali saluti\nTractor Supply"
+    }
+  ]
+}

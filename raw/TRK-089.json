@@ -1,0 +1,56 @@
+{
+  "truck_id": "TRK-089",
+  "priority": "normal",
+  "ramp_status": [
+    {
+      "ramp": "R01",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R02",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R03",
+      "status": "occupied",
+      "queue_length": 82
+    },
+    {
+      "ramp": "R04",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R05",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R06",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R07",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R08",
+      "status": "free",
+      "queue_length": 0
+    }
+  ],
+  "documentation": [
+    {
+      "type": "photo",
+      "url": "/assets/damaged_parcels/undamaged/1100_jpg.rf.a8fd864e47462e2aa71e664a11ad180a.jpg"
+    },
+    {
+      "type": "email",
+      "text": "Subject: Avviso di consegna – CHESAPEAKE FINANCIAL SHARES INC\n\nCiao a tutti,\n\nA nome di CHESAPEAKE FINANCIAL SHARES INC, segnaliamo la consegna di 26 pallet di merce standard in arrivo oggi.\n\nMi sono svegliato stamattina e ho trovato il mio caffè, il mio telefono e i miei problemi.\n\nCordiali saluti\nCHESAPEAKE FINANCIAL SHARES"
+    }
+  ]
+}

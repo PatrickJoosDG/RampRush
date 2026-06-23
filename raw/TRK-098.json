@@ -1,0 +1,52 @@
+{
+  "truck_id": "TRK-098",
+  "priority": "normal",
+  "ramp_status": [
+    {
+      "ramp": "R01",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R02",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R03",
+      "status": "occupied",
+      "queue_length": 90
+    },
+    {
+      "ramp": "R04",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R05",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R06",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R07",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R08",
+      "status": "free",
+      "queue_length": 0
+    }
+  ],
+  "documentation": [
+    {
+      "type": "email",
+      "text": "Subject: Avis de livraison – Builders FirstSource, Inc.\n\nBonjour à tous,\n\nVeuillez noter l'arrivée prévue de Builders FirstSource, Inc. avec 40 colis de colis encombrant.\nUrgent! Dégâts importants sur la cargaison.\n\nJ'ai appris que les abeilles font plus d'un million de kilomètres par an, ce qui est vraiment incroyable.\n\nCordialement\nBuilders FirstSource, "
+    }
+  ]
+}

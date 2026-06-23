@@ -1,0 +1,56 @@
+{
+  "truck_id": "TRK-069",
+  "priority": "normal",
+  "ramp_status": [
+    {
+      "ramp": "R01",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R02",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R03",
+      "status": "occupied",
+      "queue_length": 64
+    },
+    {
+      "ramp": "R04",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R05",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R06",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R07",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R08",
+      "status": "free",
+      "queue_length": 0
+    }
+  ],
+  "documentation": [
+    {
+      "type": "photo",
+      "url": "/assets/damaged_parcels/undamaged/1120_jpg.rf.cddd419dea2295ec4a2cbb799203ee72.jpg"
+    },
+    {
+      "type": "email",
+      "text": "Subject: Notificación de entrega – Xsolla SPAC 1\n\nHola equipo,\n\nNotificamos la llegada de Xsolla SPAC 1 con 14 paquetes de carga voluminosa.\n\nHabía una vez un hombre llamado Arpad Szulc que vivió 122 años.\n\nSaludos cordiales\nXsolla SPAC 1"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "truck_id": "TRK-058",
+  "priority": "normal",
+  "ramp_status": [
+    {
+      "ramp": "R01",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R02",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R03",
+      "status": "occupied",
+      "queue_length": 53
+    },
+    {
+      "ramp": "R04",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R05",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R06",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R07",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R08",
+      "status": "free",
+      "queue_length": 0
+    }
+  ],
+  "documentation": [
+    {
+      "type": "photo",
+      "url": "/assets/damaged_parcels/damaged/train_image_7031_jpg.rf.2eb5484cfc2db2562346e2a6126915b9.jpg"
+    },
+    {
+      "type": "email",
+      "text": "Subject: Avviso di consegna – Black Spade Acquisition III Co\n\nCiao a tutti,\n\nVi comunichiamo che Black Spade Acquisition III Co consegnerà 14 pallet di elettronica.\nAttenzione: gravi danni alla merce!\n\nIeri ho visto un animale che sembrava un misto tra un cane e un gatto, ma poi ho scoperto che si trattava di un gatto marmoreo.\n\nCordiali saluti\nBlack Spade Acquisition III Co"
+    }
+  ]
+}

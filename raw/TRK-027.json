@@ -1,0 +1,56 @@
+{
+  "truck_id": "TRK-027",
+  "priority": "normal",
+  "ramp_status": [
+    {
+      "ramp": "R01",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R02",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R03",
+      "status": "occupied",
+      "queue_length": 24
+    },
+    {
+      "ramp": "R04",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R05",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R06",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R07",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R08",
+      "status": "free",
+      "queue_length": 0
+    }
+  ],
+  "documentation": [
+    {
+      "type": "photo",
+      "url": "/assets/damaged_parcels/undamaged/874_jpg.rf.829a119c6b65af579fc426ed4aeb63a2.jpg"
+    },
+    {
+      "type": "email",
+      "text": "Subject: Delivery Notification – Barratt Redrow\n\nHi team,\n\nOn behalf of Barratt Redrow, please be advised of an incoming delivery of 43 pallets of electronics today.\n\nI told my wife she was drawing her eyebrows too high, she looked surprised.\n\nBest regards\nBarratt Redrow"
+    }
+  ]
+}

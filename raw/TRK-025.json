@@ -1,0 +1,52 @@
+{
+  "truck_id": "TRK-025",
+  "priority": "normal",
+  "ramp_status": [
+    {
+      "ramp": "R01",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R02",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R03",
+      "status": "occupied",
+      "queue_length": 22
+    },
+    {
+      "ramp": "R04",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R05",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R06",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R07",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R08",
+      "status": "free",
+      "queue_length": 0
+    }
+  ],
+  "documentation": [
+    {
+      "type": "email",
+      "text": "Subject: Notificación de entrega – STRATS(SM) Trust for Goldman Sachs Group Securities, Series 2006-2\n\nHola equipo,\n\nEn nombre de STRATS(SM) Trust for Goldman Sachs Group Securities, Series 2006-2, les informamos de la entrega de 20 palets de carga voluminosa hoy.\n\nMe gustó saber que hay una especie de sal cuyo valor puede llegar a pagar el precio de una casa en el mundo real.\n\nSaludos cordiales\nSTRATS Trust for Goldman Sachs Securities, Series 2006-2"
+    }
+  ]
+}

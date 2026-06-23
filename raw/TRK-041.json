@@ -1,0 +1,56 @@
+{
+  "truck_id": "TRK-041",
+  "priority": "normal",
+  "ramp_status": [
+    {
+      "ramp": "R01",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R02",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R03",
+      "status": "occupied",
+      "queue_length": 37
+    },
+    {
+      "ramp": "R04",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R05",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R06",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R07",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R08",
+      "status": "free",
+      "queue_length": 0
+    }
+  ],
+  "documentation": [
+    {
+      "type": "photo",
+      "url": "/assets/damaged_parcels/undamaged/d23263_jpg.rf.618ae68758cbae99a042712d332fdafa.jpg"
+    },
+    {
+      "type": "email",
+      "text": "Subject: Notificación de entrega – Western Asset High Yield Opportunity Fund Inc.\n\nHola equipo,\n\nEn nombre de Western Asset High Yield Opportunity Fund Inc., les informamos de la entrega de 24 paquetes de productos perecederos hoy.\n\nMe sacó un kilómetro de gasolina el coche de mi hermano.\n\nSaludos cordiales\nWestern Asset High Yield Opportunity Fund "
+    }
+  ]
+}

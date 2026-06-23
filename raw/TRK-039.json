@@ -1,0 +1,52 @@
+{
+  "truck_id": "TRK-039",
+  "priority": "normal",
+  "ramp_status": [
+    {
+      "ramp": "R01",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R02",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R03",
+      "status": "occupied",
+      "queue_length": 35
+    },
+    {
+      "ramp": "R04",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R05",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R06",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R07",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R08",
+      "status": "free",
+      "queue_length": 0
+    }
+  ],
+  "documentation": [
+    {
+      "type": "email",
+      "text": "Subject: Lieferankündigung – Citibank,N.A./ADR\n\nHallo Team,\n\nWir informieren Sie über den heutigen Eingang von Citibank,N.A./ADR: 19 Pakete Sperrgut.\n\nDie Welt hat 246 Akkorde mit den längsten Seidenraupeln, die sich in der Provinz Qinghai in China befinden.\n\nMit freundlichen Grüßen\nCitibank,N.A./ADR"
+    }
+  ]
+}

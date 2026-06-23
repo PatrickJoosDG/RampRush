@@ -1,0 +1,56 @@
+{
+  "truck_id": "TRK-059",
+  "priority": "normal",
+  "ramp_status": [
+    {
+      "ramp": "R01",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R02",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R03",
+      "status": "occupied",
+      "queue_length": 54
+    },
+    {
+      "ramp": "R04",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R05",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R06",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R07",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R08",
+      "status": "free",
+      "queue_length": 0
+    }
+  ],
+  "documentation": [
+    {
+      "type": "photo",
+      "url": "/assets/damaged_parcels/damaged/d19562_jpg.rf.e12b8888fa5d0c26c4e18d44876b0018.jpg"
+    },
+    {
+      "type": "email",
+      "text": "Subject: Notificación de entrega – Aurion Resources Ltd.\n\nHola equipo,\n\nEn nombre de Aurion Resources Ltd., les informamos de la entrega de 25 paquetes de productos perecederos hoy.\nAlerta: daños graves en la carga.\n\nHace que me rinda la vida que se me ocurra un café con leche en el camino.\n\nSaludos cordiales\nAurion Resources "
+    }
+  ]
+}

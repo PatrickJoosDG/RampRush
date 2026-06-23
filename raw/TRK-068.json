@@ -1,0 +1,52 @@
+{
+  "truck_id": "TRK-068",
+  "priority": "normal",
+  "ramp_status": [
+    {
+      "ramp": "R01",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R02",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R03",
+      "status": "occupied",
+      "queue_length": 63
+    },
+    {
+      "ramp": "R04",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R05",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R06",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R07",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R08",
+      "status": "free",
+      "queue_length": 0
+    }
+  ],
+  "documentation": [
+    {
+      "type": "email",
+      "text": "Subject: Lieferankündigung – GENWORTH FINANCIAL INC\n\nHallo Team,\n\nWir informieren Sie über den heutigen Eingang von GENWORTH FINANCIAL INC: 26 Paletten Standardware.\n\nIch habe mein Auto so gut gepflegt, dass es jetzt sogar die Haustiere im Haus scheint.\n\nMit freundlichen Grüßen\nGENWORTH FINANCIAL"
+    }
+  ]
+}

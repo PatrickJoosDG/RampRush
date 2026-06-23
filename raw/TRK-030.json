@@ -1,0 +1,52 @@
+{
+  "truck_id": "TRK-030",
+  "priority": "high",
+  "ramp_status": [
+    {
+      "ramp": "R01",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R02",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R03",
+      "status": "occupied",
+      "queue_length": 27
+    },
+    {
+      "ramp": "R04",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R05",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R06",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R07",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R08",
+      "status": "free",
+      "queue_length": 0
+    }
+  ],
+  "documentation": [
+    {
+      "type": "email",
+      "text": "Subject: Notificación de entrega – ARROW FINANCIAL CORP\n\nHola equipo,\n\nEn nombre de ARROW FINANCIAL CORP, les informamos de la entrega de 34 palets de mercancía estándar hoy.\n\nMe despacho ayer porque me quedé con un cargamento de mierda.\n\nSaludos cordiales\nARROW FINANCIAL"
+    }
+  ]
+}

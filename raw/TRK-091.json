@@ -1,0 +1,56 @@
+{
+  "truck_id": "TRK-091",
+  "priority": "normal",
+  "ramp_status": [
+    {
+      "ramp": "R01",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R02",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R03",
+      "status": "occupied",
+      "queue_length": 84
+    },
+    {
+      "ramp": "R04",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R05",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R06",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R07",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R08",
+      "status": "free",
+      "queue_length": 0
+    }
+  ],
+  "documentation": [
+    {
+      "type": "photo",
+      "url": "/assets/damaged_parcels/undamaged/2_jpg.rf.89cb8279be8aa9cae27b369110422baf.jpg"
+    },
+    {
+      "type": "email",
+      "text": "Subject: Lieferankündigung – TransDigm Group\n\nHallo Team,\n\nIm Auftrag von TransDigm Group kündigen wir für heute eine Lieferung von 25 Paletten Kühlware an.\n\nEs gibt ein Wort im Deutschen, das bedeutet, dass man sich bemüht, aber es ist eigentlich nur ein Wort, das man im Supermarkt findet.\n\nMit freundlichen Grüßen\nTransDigm"
+    }
+  ]
+}

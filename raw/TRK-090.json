@@ -1,0 +1,56 @@
+{
+  "truck_id": "TRK-090",
+  "priority": "normal",
+  "ramp_status": [
+    {
+      "ramp": "R01",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R02",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R03",
+      "status": "occupied",
+      "queue_length": 83
+    },
+    {
+      "ramp": "R04",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R05",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R06",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R07",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R08",
+      "status": "free",
+      "queue_length": 0
+    }
+  ],
+  "documentation": [
+    {
+      "type": "photo",
+      "url": "/assets/damaged_parcels/undamaged/1069_jpg.rf.d8610ac979dd97db383442392a4788ea.jpg"
+    },
+    {
+      "type": "email",
+      "text": "Subject: Avviso di consegna – A2 Gold Corp.\n\nCiao a tutti,\n\nA nome di A2 Gold Corp., segnaliamo la consegna di 21 colli di merce ingombrante in arrivo oggi.\n\nStavamo bene ieri, no?\n\nCordiali saluti\nA2 Gold "
+    }
+  ]
+}

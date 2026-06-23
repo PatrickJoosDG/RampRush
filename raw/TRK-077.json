@@ -1,0 +1,56 @@
+{
+  "truck_id": "TRK-077",
+  "priority": "normal",
+  "ramp_status": [
+    {
+      "ramp": "R01",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R02",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R03",
+      "status": "occupied",
+      "queue_length": 71
+    },
+    {
+      "ramp": "R04",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R05",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R06",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R07",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R08",
+      "status": "free",
+      "queue_length": 0
+    }
+  ],
+  "documentation": [
+    {
+      "type": "photo",
+      "url": "/assets/damaged_parcels/undamaged/440_jpg.rf.5cc90ae68e1b45848ecbd67df733c00a.jpg"
+    },
+    {
+      "type": "email",
+      "text": "Subject: Avis de livraison – Leucadia National\n\nBonjour à tous,\n\nDe la part de Leucadia National, nous vous informons d'une livraison de 32 palettes de marchandise standard aujourd'hui.\n\nJe sais que le plus grand diamant du monde, le Cullinan, pèse environ 3 106 carats.\n\nCordialement\nLeucadia National"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "truck_id": "TRK-083",
+  "priority": "normal",
+  "ramp_status": [
+    {
+      "ramp": "R01",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R02",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R03",
+      "status": "occupied",
+      "queue_length": 76
+    },
+    {
+      "ramp": "R04",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R05",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R06",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R07",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R08",
+      "status": "free",
+      "queue_length": 0
+    }
+  ],
+  "documentation": [
+    {
+      "type": "email",
+      "text": "Subject: Lieferankündigung – Bitcoin Infrastructure Acquisition Corp Ltd\n\nHallo Team,\n\nIm Auftrag von Bitcoin Infrastructure Acquisition Corp Ltd kündigen wir für heute eine Lieferung von 7 Pakete Kühlware an.\n\nIch bin so müde, ich denke, ich brauche eine Ersatzfrau, um mich auf die Straße zu setzen.\n\nMit freundlichen Grüßen\nBitcoin Infrastructure Acquisition"
+    }
+  ]
+}

@@ -10,9 +10,12 @@ Event loop:
     5. POST the decision -> the server then sends the next truck
 
 The decision / ramp-selection logic is fully implemented from the rules in
-docs/documentation.md. The *extraction* (turning noisy email / audio / photo
-docs into structured fields) is the hard AI part — it lives in extract_truck()
-and is deliberately isolated so you can grow it without touching the loop.
+docs/documentation.md. The *extraction* combines every signal for a truck —
+the supplier email, the locally transcribed audio message (faster-whisper) and
+an image description (currently a stub) — and hands all of it to the local
+`claude` CLI, which returns the structured fields plus a most-likely supplier
+*name*. The supplier-id mapping is done afterwards in _match_supplier(); the
+model never returns ids itself. It all lives in extract_truck().
 
 Usage:
     python main.py --team-id my-team
@@ -22,7 +25,11 @@ import argparse
 import asyncio
 import json
 import re
+import subprocess
+import tempfile
 from difflib import get_close_matches
+from pathlib import Path
+from urllib.parse import urljoin
 
 import requests
 import websockets
@@ -31,6 +38,18 @@ from parse_suppliers import parse_suppliers
 
 BASE = "https://truckgenerator-production.up.railway.app"
 WS_URL = "wss://truckgenerator-production.up.railway.app/ws?team_id={team_id}"
+
+# Local `claude` CLI (uses your Claude subscription) — the extraction model.
+CLAUDE_BIN = "claude"
+CLAUDE_MODEL = "sonnet"
+CLAUDE_TIMEOUT = 120
+
+# Scratch dir for downloaded audio/photo assets.
+WORKDIR = Path(tempfile.gettempdir()) / "ramprush"
+WORKDIR.mkdir(parents=True, exist_ok=True)
+
+# Whisper model used to transcribe audio messages; size set from the CLI.
+_WHISPER = {"model": None, "name": "medium"}
 
 # Ramp categories, ordered by preference within each category (see docs).
 RAMP_CATEGORIES = {
@@ -57,35 +76,12 @@ _SUPPLIER_RE = re.compile(
     % "|".join(re.escape(n) for n in sorted(_NAME_TO_ID, key=len, reverse=True) if n)
 )
 
-_DAMAGE_WORDS = (
-    "damage", "damaged", "broken", "crushed",
-    "beschädigt", "schaden", "kaputt",
-    "endommagé", "endommage", "cassé", "casse", "abîmé",
-    "danneggiato", "rotto",
-)
-_PERISHABLE_WORDS = (
-    "perishable", "refrigerated", "frozen", "chilled", "cold chain",
-    "kühl", "kuhl", "gekühlt", "tiefkühl", "frisch",
-    "frais", "réfrigéré", "refrigere", "surgelé", "surgele",
-    "deperibile", "refrigerato", "surgelato",
-)
-_OVERSIZED_WORDS = (
-    "oversized", "oversize", "bulky", "sperrgut", "übergroß", "ubergross",
-    "encombrant", "hors gabarit", "ingombrante",
-)
-_PARCEL_WORDS = ("parcel", "parcels", "colis", "paket", "pakete", "pacchi", "pacco")
-_PALLET_WORDS = ("pallet", "pallets", "palette", "paletten", "palettes")
-
-
-def _email_text(msg: dict) -> str:
-    for doc in msg.get("documentation", []):
-        if doc.get("type") == "email":
-            return doc.get("text", "") or ""
-    return ""
-
-
 def _match_supplier(text: str) -> tuple[int | None, str]:
-    """Best-effort supplier resolution from free text. Returns (id, name)."""
+    """Best-effort supplier resolution from a name/free text. Returns (id, name).
+
+    Used for the *supplier-id mapping* step, after the model has extracted a
+    most-likely supplier name — the model never returns ids itself.
+    """
     low = text.lower()
     # 1) word-bounded hit on a known supplier name; prefer the longest match
     #    so a specific name beats a short one that happens to also appear.
@@ -104,47 +100,211 @@ def _match_supplier(text: str) -> tuple[int | None, str]:
     return None, ""
 
 
-def _count_and_unit(text: str) -> tuple[int, str]:
-    low = text.lower()
-    unit = "parcels" if any(w in low for w in _PARCEL_WORDS) else "pallets"
-    # number sitting next to a unit word, e.g. "30 colis" / "12 pallets"
-    unit_words = _PARCEL_WORDS if unit == "parcels" else _PALLET_WORDS
-    pat = r"(\d+)\s*(?:%s)" % "|".join(map(re.escape, unit_words))
-    m = re.search(pat, low)
-    if not m:  # fall back to any number in the text
-        m = re.search(r"\b(\d{1,4})\b", low)
-    count = int(m.group(1)) if m else 0
-    return count, unit
+# --------------------------------------------------------------------------- #
+# Signal gathering  (email + audio transcript + image description)
+# --------------------------------------------------------------------------- #
+def _download(url: str, dest: Path) -> bool:
+    full = urljoin(BASE + "/", url.lstrip("/"))
+    try:
+        r = requests.get(full, timeout=30)
+        r.raise_for_status()
+        dest.write_bytes(r.content)
+        return True
+    except Exception as e:  # noqa: BLE001
+        print(f"    !! download failed {full}: {e}")
+        return False
 
 
-def _goods_type(text: str, unit: str, count: int) -> str:
-    low = text.lower()
-    if any(w in low for w in _PERISHABLE_WORDS):
-        return "perishable"
-    if any(w in low for w in _OVERSIZED_WORDS):
-        return "oversized"
-    return "standard"
+def _get_whisper():
+    """Lazily load the faster-whisper model (first transcription only)."""
+    if _WHISPER["model"] is None:
+        from faster_whisper import WhisperModel
+
+        print(f"loading whisper '{_WHISPER['name']}' ...")
+        _WHISPER["model"] = WhisperModel(
+            _WHISPER["name"], device="cpu", compute_type="int8"
+        )
+        print("whisper ready")
+    return _WHISPER["model"]
 
 
-def extract_truck(msg: dict) -> dict:
+def transcribe_audio(url: str) -> str:
+    """Download an audio message and transcribe it locally with Whisper."""
+    dest = WORKDIR / Path(url).name
+    if not _download(url, dest):
+        return ""
+    try:
+        segments, _info = _get_whisper().transcribe(str(dest), beam_size=5)
+        return "".join(seg.text for seg in segments).strip()
+    except Exception as e:  # noqa: BLE001
+        print(f"    !! transcription failed: {e}")
+        return ""
+
+
+def describe_image(url: str) -> str:
+    """STUB — image description is added later (vision call on the photo).
+
+    Returns an empty description for now so the extraction prompt simply has
+    no visual signal to work with. When implemented this should return a short
+    natural-language description of the parcel photo (contents + any visible
+    transport damage) so the extraction model can reason about it.
+    """
+    return ""
+
+
+def gather_signals(
+    msg: dict,
+    *,
+    transcribe_fn=transcribe_audio,
+    describe_fn=describe_image,
+) -> dict:
+    """Collect every documentation signal for one truck into plain text."""
+    email = ""
+    transcript = ""
+    image_description = ""
+    for doc in msg.get("documentation", []):
+        kind = doc.get("type")
+        if kind == "email" and not email:
+            email = doc.get("text", "") or ""
+        elif kind == "audio" and doc.get("url") and not transcript:
+            transcript = transcribe_fn(doc["url"])
+        elif kind == "photo" and doc.get("url") and not image_description:
+            image_description = describe_fn(doc["url"])
+    return {
+        "email": email,
+        "transcript": transcript,
+        "image_description": image_description,
+    }
+
+
+# --------------------------------------------------------------------------- #
+# Extraction  (a single local `claude` CLI call over all the signals)
+# --------------------------------------------------------------------------- #
+EXTRACT_PROMPT = (
+    "You extract structured logistics data about ONE inbound truck from its "
+    "noisy documentation. You are given up to three signals: a supplier EMAIL, "
+    "a speech-to-text TRANSCRIPT of an audio message, and a DESCRIPTION of a "
+    "parcel photo. Any of them may be empty, multilingual (German, French, "
+    "Italian, Spanish, English), contain typos/accents and irrelevant "
+    "small-talk which you MUST ignore. Combine the signals; if they conflict, "
+    'prefer the most specific value. Convert spoken number words to digits '
+    '(e.g. German "vierunddreissig" = 34). Output ONLY one compact JSON '
+    "object, no markdown, with keys:\n"
+    "  supplier_name : string, your single MOST LIKELY delivering company "
+    "name. Do NOT return any id — id mapping is done separately.\n"
+    "  parcel_count  : integer, the announced number of units.\n"
+    '  unit          : "parcels" or "pallets". colis/paquets/paquetes/Pakete/'
+    "pacchi/packages/cartons = parcels; palettes/palets/Paletten/pallet/"
+    "pallets = pallets. Use the noun the COUNT refers to.\n"
+    '  goods_type    : "standard" | "oversized" | "perishable". perishable = '
+    "refrigerated/frozen/chilled/frais/Kuhlware/verderblich/deperibile. "
+    "oversized = bulky/Sperrgut/encombrant/voluminoso/ingombrante. otherwise "
+    "standard.\n"
+    '  has_damage    : boolean, true ONLY if the photo DESCRIPTION reports '
+    "visible transport damage (crushed/torn/dented/broken/open boxes). With no "
+    "photo description, return false.\n"
+)
+
+
+def _claude(prompt: str) -> str:
+    """Run the local `claude` CLI once and return its stdout."""
+    try:
+        out = subprocess.run(
+            [CLAUDE_BIN, "-p", "--model", CLAUDE_MODEL, prompt],
+            capture_output=True,
+            text=True,
+            timeout=CLAUDE_TIMEOUT,
+        )
+        return out.stdout.strip()
+    except Exception as e:  # noqa: BLE001
+        print(f"    !! claude call failed: {e}")
+        return ""
+
+
+def _first_json(text: str) -> dict:
+    """Pull the first JSON object out of a (possibly fenced) model reply."""
+    if not text:
+        return {}
+    text = text.replace("```json", "```")
+    m = re.search(r"\{.*\}", text, re.DOTALL)
+    if not m:
+        return {}
+    try:
+        return json.loads(m.group(0))
+    except json.JSONDecodeError:
+        cleaned = re.sub(r",\s*}", "}", m.group(0))
+        try:
+            return json.loads(cleaned)
+        except json.JSONDecodeError:
+            return {}
+
+
+def build_extraction_prompt(signals: dict) -> str:
+    """Assemble the EXTRACT_PROMPT plus every available signal."""
+    return (
+        f"{EXTRACT_PROMPT}\n"
+        f"EMAIL:\n{signals.get('email', '')}\n\n"
+        f"TRANSCRIPT:\n{signals.get('transcript', '')}\n\n"
+        f"DESCRIPTION:\n{signals.get('image_description', '')}\n"
+    )
+
+
+def parse_extraction(reply: str) -> dict:
+    """Normalise the model's JSON reply into our structured field dict."""
+    data = _first_json(reply)
+    out = {
+        "supplier_name": str(data.get("supplier_name") or "").strip(),
+        "parcel_count": 0,
+        "unit": "pallets",
+        "goods_type": "standard",
+        "has_damage": bool(data.get("has_damage", False)),
+    }
+    try:
+        out["parcel_count"] = int(data.get("parcel_count"))
+    except (TypeError, ValueError):
+        out["parcel_count"] = 0
+    u = str(data.get("unit") or "").lower()
+    parcel_words = ("parcel", "colis", "paquet", "paquete", "paket", "pacch", "pacco",
+                    "package", "carton")
+    out["unit"] = "parcels" if any(w in u for w in parcel_words) else "pallets"
+    g = str(data.get("goods_type") or "").lower()
+    if any(w in g for w in ("perish", "perissable", "frais", "kuhl", "kühl",
+                            "refriger", "frozen", "chilled", "deperibile",
+                            "verderb", "perecedero")):
+        out["goods_type"] = "perishable"
+    elif any(w in g for w in ("over", "size", "bulky", "sperr", "encombrant",
+                              "voluminos", "ingombrante")):
+        out["goods_type"] = "oversized"
+    else:
+        out["goods_type"] = "standard"
+    return out
+
+
+def extract_truck(
+    msg: dict,
+    *,
+    transcribe_fn=transcribe_audio,
+    describe_fn=describe_image,
+    claude_fn=_claude,
+) -> dict:
     """Turn a raw truck message into the structured fields the API expects.
 
-    TODO: this currently reads the *email* only. To raise the extraction score,
-    add photo (damage detection / vision) and audio (transcription) handling —
-    they hang off the same `documentation` list. Keep returning this same dict.
+    Combines the email, the transcribed audio message and the image
+    description, hands all of it to the local `claude` CLI for extraction, and
+    only then maps the model's most-likely supplier *name* to a canonical
+    supplier *id*. The model never returns ids itself.
     """
-    text = _email_text(msg)
-    sid, sname = _match_supplier(text)
-    count, unit = _count_and_unit(text)
-    goods = _goods_type(text, unit, count)
-    has_damage = any(w in text.lower() for w in _DAMAGE_WORDS)
+    signals = gather_signals(msg, transcribe_fn=transcribe_fn, describe_fn=describe_fn)
+    fields = parse_extraction(claude_fn(build_extraction_prompt(signals)))
+
+    sid, canon = _match_supplier(fields["supplier_name"])
     return {
         "supplier_id": sid if sid is not None else 0,
-        "supplier_name": sname,
-        "parcel_count": count,
-        "unit": unit,
-        "has_damage": has_damage,
-        "goods_type": goods,
+        "supplier_name": canon if sid is not None else fields["supplier_name"],
+        "parcel_count": fields["parcel_count"],
+        "unit": fields["unit"],
+        "has_damage": fields["has_damage"],
+        "goods_type": fields["goods_type"],
     }
 
 
@@ -226,7 +386,8 @@ async def run(team_id: str, once: bool) -> None:
                 continue
 
             truck_id = msg.get("truck_id", "UNKNOWN")
-            path, payload = decide(msg)
+            # extraction blocks (whisper + claude CLI); run it off the loop.
+            path, payload = await asyncio.to_thread(decide, msg)
             payload["team_id"] = team_id
             print(f"[{truck_id}] priority={msg.get('priority')} "
                   f"-> {'REJECT' if path == '/reject-truck' else payload.get('assigned_ramp')}")
@@ -240,7 +401,10 @@ def main() -> None:
     p = argparse.ArgumentParser(description="RampRush ramp-manager agent")
     p.add_argument("--team-id", required=True)
     p.add_argument("--once", action="store_true", help="answer one truck and stop")
+    p.add_argument("--whisper-model", default="medium",
+                   help="faster-whisper model size (tiny/base/small/medium/large-v3)")
     args = p.parse_args()
+    _WHISPER["name"] = args.whisper_model
     try:
         asyncio.run(run(args.team_id, args.once))
     except KeyboardInterrupt:

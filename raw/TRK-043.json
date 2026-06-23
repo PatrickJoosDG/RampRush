@@ -1,0 +1,52 @@
+{
+  "truck_id": "TRK-043",
+  "priority": "normal",
+  "ramp_status": [
+    {
+      "ramp": "R01",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R02",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R03",
+      "status": "occupied",
+      "queue_length": 39
+    },
+    {
+      "ramp": "R04",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R05",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R06",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R07",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R08",
+      "status": "free",
+      "queue_length": 0
+    }
+  ],
+  "documentation": [
+    {
+      "type": "email",
+      "text": "Subject: Lieferankündigung – Arbe Robotics Ltd.\n\nHallo Team,\n\nWir informieren Sie über den heutigen Eingang von Arbe Robotics Ltd.: 23 Pakete Kühlware.\n\nDas neue Reich der Tierarten hat die Gottesanbiter georgisch als Ausrottungsrisiko eingestuft.\n\nMit freundlichen Grüßen\nArbe Robotics "
+    }
+  ]
+}

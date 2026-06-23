@@ -1,0 +1,56 @@
+{
+  "truck_id": "TRK-082",
+  "priority": "normal",
+  "ramp_status": [
+    {
+      "ramp": "R01",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R02",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R03",
+      "status": "occupied",
+      "queue_length": 76
+    },
+    {
+      "ramp": "R04",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R05",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R06",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R07",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R08",
+      "status": "free",
+      "queue_length": 0
+    }
+  ],
+  "documentation": [
+    {
+      "type": "photo",
+      "url": "/assets/damaged_parcels/undamaged/775_jpg.rf.e967e57a2b64fa5b4715c8a58b2bbf09.jpg"
+    },
+    {
+      "type": "audio",
+      "url": "/assets/audio/evt_880.mp3"
+    }
+  ]
+}

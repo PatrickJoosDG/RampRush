@@ -1,0 +1,52 @@
+{
+  "truck_id": "TRK-067",
+  "priority": "normal",
+  "ramp_status": [
+    {
+      "ramp": "R01",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R02",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R03",
+      "status": "occupied",
+      "queue_length": 62
+    },
+    {
+      "ramp": "R04",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R05",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R06",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R07",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R08",
+      "status": "free",
+      "queue_length": 0
+    }
+  ],
+  "documentation": [
+    {
+      "type": "email",
+      "text": "Subject: Notificación de entrega – INTERNATIONAL BANCSHARES CORP\n\nHola equipo,\n\nEn nombre de INTERNATIONAL BANCSHARES CORP, les informamos de la entrega de 41 palets de electrónica hoy.\n\nMe encantaría llegar a tiempo, pero mis camiones tienen más personalidad que mí.\n\nSaludos cordiales\nBANCSHARES"
+    }
+  ]
+}

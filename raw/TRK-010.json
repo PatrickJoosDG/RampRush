@@ -1,0 +1,52 @@
+{
+  "truck_id": "TRK-010",
+  "priority": "normal",
+  "ramp_status": [
+    {
+      "ramp": "R01",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R02",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R03",
+      "status": "occupied",
+      "queue_length": 8
+    },
+    {
+      "ramp": "R04",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R05",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R06",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R07",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R08",
+      "status": "free",
+      "queue_length": 0
+    }
+  ],
+  "documentation": [
+    {
+      "type": "email",
+      "text": "Subject: Avis de livraison – Gunnison Copper Corp.\n\nBonjour à tous,\n\nVeuillez noter l'arrivée prévue de Gunnison Copper Corp. avec 35 palettes de colis encombrant.\n\nJe vais prendre un café au café de la gare avant de mon prochain livraison.\n\nCordialement\nGunnison Copper "
+    }
+  ]
+}

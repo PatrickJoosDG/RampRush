@@ -1,0 +1,56 @@
+{
+  "truck_id": "TRK-006",
+  "priority": "normal",
+  "ramp_status": [
+    {
+      "ramp": "R01",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R02",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R03",
+      "status": "occupied",
+      "queue_length": 4
+    },
+    {
+      "ramp": "R04",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R05",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R06",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R07",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R08",
+      "status": "free",
+      "queue_length": 0
+    }
+  ],
+  "documentation": [
+    {
+      "type": "photo",
+      "url": "/assets/damaged_parcels/damaged/train_image_7203_jpg.rf.97b66636c6b0dd5583aeedf4a0d0e0fd.jpg"
+    },
+    {
+      "type": "email",
+      "text": "Subject: Delivery Notification – Actavis plc (NYSE:ACT) added to S&P 500\n\nHi team,\n\nOn behalf of Actavis plc (NYSE:ACT) added to S&P 500, please be advised of an incoming delivery of 23 parcels of perishable goods today.\nAlert: major cargo damage detected!\n\nI told my wife she was drawing her eyebrows too high, she looked surprised.\n\nBest regards\nActavis added to S&P 500"
+    }
+  ]
+}

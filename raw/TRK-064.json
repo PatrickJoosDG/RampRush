@@ -1,0 +1,52 @@
+{
+  "truck_id": "TRK-064",
+  "priority": "normal",
+  "ramp_status": [
+    {
+      "ramp": "R01",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R02",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R03",
+      "status": "occupied",
+      "queue_length": 59
+    },
+    {
+      "ramp": "R04",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R05",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R06",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R07",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R08",
+      "status": "free",
+      "queue_length": 0
+    }
+  ],
+  "documentation": [
+    {
+      "type": "email",
+      "text": "Subject: Delivery Notification – GOLUB CAPITAL BDC, Inc.\n\nHi team,\n\nWe are writing to inform you that GOLUB CAPITAL BDC, Inc. will be delivering 28 parcels of standard goods.\n\nI told my wife she was drawing her eyebrows too high, she looked surprised.\n\nBest regards\nGOLUB CAPITAL BDC, "
+    }
+  ]
+}

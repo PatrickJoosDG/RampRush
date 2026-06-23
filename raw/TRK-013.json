@@ -1,0 +1,52 @@
+{
+  "truck_id": "TRK-013",
+  "priority": "normal",
+  "ramp_status": [
+    {
+      "ramp": "R01",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R02",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R03",
+      "status": "occupied",
+      "queue_length": 11
+    },
+    {
+      "ramp": "R04",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R05",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R06",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R07",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R08",
+      "status": "free",
+      "queue_length": 0
+    }
+  ],
+  "documentation": [
+    {
+      "type": "email",
+      "text": "Subject: Avis de livraison – LITHIUM AMERICAS CORP.\n\nBonjour à tous,\n\nDe la part de LITHIUM AMERICAS CORP., nous vous informons d'une livraison de 9 colis de marchandise standard aujourd'hui.\n\nJe me lave les mains tous les 30 minutes pour éviter les bactéries dans les emplacements où je travaille.\n\nCordialement\nLITHIUM AMERICAS "
+    }
+  ]
+}

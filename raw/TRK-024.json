@@ -1,0 +1,56 @@
+{
+  "truck_id": "TRK-024",
+  "priority": "normal",
+  "ramp_status": [
+    {
+      "ramp": "R01",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R02",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R03",
+      "status": "occupied",
+      "queue_length": 21
+    },
+    {
+      "ramp": "R04",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R05",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R06",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R07",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R08",
+      "status": "free",
+      "queue_length": 0
+    }
+  ],
+  "documentation": [
+    {
+      "type": "photo",
+      "url": "/assets/damaged_parcels/undamaged/d11715_jpg.rf.cb7b7cf37583432de462b84163ad85af.jpg"
+    },
+    {
+      "type": "email",
+      "text": "Subject: Avis de livraison – Motorola Solutions, Inc.\n\nBonjour à tous,\n\nDe la part de Motorola Solutions, Inc., nous vous informons d'une livraison de 50 colis de produits périssables aujourd'hui.\n\nJ'ai encore les chevilles en caoutchouc après ce week-end de shopping.\n\nCordialement\nMotorola , "
+    }
+  ]
+}

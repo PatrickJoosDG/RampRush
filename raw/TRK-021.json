@@ -1,0 +1,56 @@
+{
+  "truck_id": "TRK-021",
+  "priority": "normal",
+  "ramp_status": [
+    {
+      "ramp": "R01",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R02",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R03",
+      "status": "occupied",
+      "queue_length": 19
+    },
+    {
+      "ramp": "R04",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R05",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R06",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R07",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R08",
+      "status": "free",
+      "queue_length": 0
+    }
+  ],
+  "documentation": [
+    {
+      "type": "photo",
+      "url": "/assets/damaged_parcels/undamaged/d5643_jpg.rf.56bb92fdee0980a4623e5a71d5d47a91.jpg"
+    },
+    {
+      "type": "email",
+      "text": "Subject: Avviso di consegna – FGI Industries Ltd.\n\nCiao a tutti,\n\nVi comunichiamo che FGI Industries Ltd. consegnerà 11 pallet di elettronica.\n\nMi sono svegliato stamattina con un sacco di peso nel collo.\n\nCordiali saluti\nFGI "
+    }
+  ]
+}

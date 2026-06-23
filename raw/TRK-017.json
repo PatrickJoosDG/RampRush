@@ -1,0 +1,56 @@
+{
+  "truck_id": "TRK-017",
+  "priority": "normal",
+  "ramp_status": [
+    {
+      "ramp": "R01",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R02",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R03",
+      "status": "occupied",
+      "queue_length": 15
+    },
+    {
+      "ramp": "R04",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R05",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R06",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R07",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R08",
+      "status": "free",
+      "queue_length": 0
+    }
+  ],
+  "documentation": [
+    {
+      "type": "photo",
+      "url": "/assets/damaged_parcels/undamaged/1070_jpg.rf.74d0e78862d174b7d1345b63e3f3a939.jpg"
+    },
+    {
+      "type": "email",
+      "text": "Subject: Delivery Notification – Armata Pharmaceuticals, Inc.\n\nHi team,\n\nOn behalf of Armata Pharmaceuticals, Inc., please be advised of an incoming delivery of 33 pallets of perishable goods today.\n\nHow's your day going so far?\n\nBest regards\nArmata Pharmaceuticals, "
+    }
+  ]
+}

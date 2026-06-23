@@ -1,0 +1,56 @@
+{
+  "truck_id": "TRK-080",
+  "priority": "normal",
+  "ramp_status": [
+    {
+      "ramp": "R01",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R02",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R03",
+      "status": "occupied",
+      "queue_length": 74
+    },
+    {
+      "ramp": "R04",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R05",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R06",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R07",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R08",
+      "status": "free",
+      "queue_length": 0
+    }
+  ],
+  "documentation": [
+    {
+      "type": "photo",
+      "url": "/assets/damaged_parcels/undamaged/48_jpg.rf.9bc05124bc59cac4a680242de13c8db4.jpg"
+    },
+    {
+      "type": "email",
+      "text": "Subject: Avviso di consegna – Sky Quarry Inc.\n\nCiao a tutti,\n\nA nome di Sky Quarry Inc., segnaliamo la consegna di 28 colli di merce deperibile in arrivo oggi.\n\nMi sto appuntando al nuovo servizio di consegna della mia azienda, quindi sono un po' stanco dopo una lunga giornata di lavoro.\n\nCordiali saluti\nSky Quarry "
+    }
+  ]
+}

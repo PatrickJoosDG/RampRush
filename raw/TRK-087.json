@@ -1,0 +1,52 @@
+{
+  "truck_id": "TRK-087",
+  "priority": "normal",
+  "ramp_status": [
+    {
+      "ramp": "R01",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R02",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R03",
+      "status": "occupied",
+      "queue_length": 80
+    },
+    {
+      "ramp": "R04",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R05",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R06",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R07",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R08",
+      "status": "free",
+      "queue_length": 0
+    }
+  ],
+  "documentation": [
+    {
+      "type": "email",
+      "text": "Subject: Avviso di consegna – Abits Group Inc\n\nCiao a tutti,\n\nA nome di Abits Group Inc, segnaliamo la consegna di 30 colli di merce standard in arrivo oggi.\n\nMi sono svegliato stamattina con un'idea per un nuovo servizio di consegna di pane fresco.\n\nCordiali saluti\nAbits"
+    }
+  ]
+}

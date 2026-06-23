@@ -1,0 +1,56 @@
+{
+  "truck_id": "TRK-001",
+  "priority": "normal",
+  "ramp_status": [
+    {
+      "ramp": "R01",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R02",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R03",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R04",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R05",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R06",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R07",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R08",
+      "status": "free",
+      "queue_length": 0
+    }
+  ],
+  "documentation": [
+    {
+      "type": "photo",
+      "url": "/assets/damaged_parcels/undamaged/d23261_jpg.rf.8adb28f2933a28a438d20a9196ca0f94.jpg"
+    },
+    {
+      "type": "email",
+      "text": "Subject: Avis de livraison – Silvaco Group, Inc.\n\nBonjour à tous,\n\nDe la part de Silvaco Group, Inc., nous vous informons d'une livraison de 46 colis de produits périssables aujourd'hui.\n\nJe me suis rendu à la gare pour collecter mon nouveau vélo, mais j'ai oublié que j'avais oublié comment s'y rendre.\n\nCordialement\nSilvaco , "
+    }
+  ]
+}

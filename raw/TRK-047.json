@@ -1,0 +1,56 @@
+{
+  "truck_id": "TRK-047",
+  "priority": "normal",
+  "ramp_status": [
+    {
+      "ramp": "R01",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R02",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R03",
+      "status": "occupied",
+      "queue_length": 43
+    },
+    {
+      "ramp": "R04",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R05",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R06",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R07",
+      "status": "free",
+      "queue_length": 0
+    },
+    {
+      "ramp": "R08",
+      "status": "free",
+      "queue_length": 0
+    }
+  ],
+  "documentation": [
+    {
+      "type": "photo",
+      "url": "/assets/damaged_parcels/undamaged/1774_jpg.rf.3e3dc32c982553837f57fa2ebcc038cf.jpg"
+    },
+    {
+      "type": "email",
+      "text": "Subject: Delivery Notification – Versigent PLC\n\nHi team,\n\nWe are writing to inform you that Versigent PLC will be delivering 32 parcels of oversized cargo.\n\nDid you know that there's a species of jellyfish that's immortal, the Turritopsis dohrnii, also known as the \"immortal jellyfish\"?\n\nBest regards\nVersigent"
+    }
+  ]
+}

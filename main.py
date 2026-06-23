@@ -48,6 +48,15 @@ RAMP_CATEGORIES = {
 _SUPPLIERS = parse_suppliers("suppliers.json")
 _NAME_TO_ID = {name.lower(): sid for sid, name in _SUPPLIERS.items()}
 
+# Single alternation of all supplier names, longest first so the regex engine
+# prefers the most specific (longest) name at any given position. Word-boundary
+# lookarounds stop short names from matching inside unrelated words
+# (e.g. "EME" inside "cordialement").
+_SUPPLIER_RE = re.compile(
+    r"(?<!\w)(?:%s)(?!\w)"
+    % "|".join(re.escape(n) for n in sorted(_NAME_TO_ID, key=len, reverse=True) if n)
+)
+
 _DAMAGE_WORDS = (
     "damage", "damaged", "broken", "crushed",
     "beschädigt", "schaden", "kaputt",
@@ -78,10 +87,13 @@ def _email_text(msg: dict) -> str:
 def _match_supplier(text: str) -> tuple[int | None, str]:
     """Best-effort supplier resolution from free text. Returns (id, name)."""
     low = text.lower()
-    # 1) exact substring hit on a known supplier name
-    for name_low, sid in _NAME_TO_ID.items():
-        if name_low and name_low in low:
-            return sid, _SUPPLIERS[sid]
+    # 1) word-bounded hit on a known supplier name; prefer the longest match
+    #    so a specific name beats a short one that happens to also appear.
+    hits = _SUPPLIER_RE.findall(low)
+    if hits:
+        best = max(hits, key=len)
+        sid = _NAME_TO_ID[best]
+        return sid, _SUPPLIERS[sid]
     # 2) fuzzy match on capitalised-looking name fragments
     candidates = re.findall(r"[A-ZÄÖÜ][\w&.\- ]{3,40}", text)
     for frag in candidates:

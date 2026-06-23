@@ -30,6 +30,7 @@ import tempfile
 from difflib import get_close_matches
 from pathlib import Path
 from urllib.parse import urljoin
+from internvl3_llamacpp import describe_image
 
 import requests
 import websockets
@@ -140,18 +141,6 @@ def transcribe_audio(url: str) -> str:
         print(f"    !! transcription failed: {e}")
         return ""
 
-
-def describe_image(url: str) -> str:
-    """STUB — image description is added later (vision call on the photo).
-
-    Returns an empty description for now so the extraction prompt simply has
-    no visual signal to work with. When implemented this should return a short
-    natural-language description of the parcel photo (contents + any visible
-    transport damage) so the extraction model can reason about it.
-    """
-    return ""
-
-
 def gather_signals(
     msg: dict,
     *,
@@ -165,11 +154,14 @@ def gather_signals(
     for doc in msg.get("documentation", []):
         kind = doc.get("type")
         if kind == "email" and not email:
+            print(f"Parsing Email")
             email = doc.get("text", "") or ""
         elif kind == "audio" and doc.get("url") and not transcript:
+            print(f"Transcribing Audio")
             transcript = transcribe_fn(doc["url"])
         elif kind == "photo" and doc.get("url") and not image_description:
-            image_description = describe_fn(doc["url"])
+            print(f"Describing Image")
+            image_description = describe_fn(BASE + doc["url"])
     return {
         "email": email,
         "transcript": transcript,

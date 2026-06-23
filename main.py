@@ -308,10 +308,14 @@ def extract_truck(
 
 
 # --------------------------------------------------------------------------- #
-# Decision  (fully implemented from the ramp rules)
+# Decision  (ramp assignment is a local `claude` CLI call; the damage->reject
+# rule stays deterministic — it's a hard rule, not a "which ramp" choice.)
 # --------------------------------------------------------------------------- #
+ALL_RAMPS = ["R01", "R02", "R03", "R04", "R05", "R06", "R07", "R08"]
+
+
 def _category(ext: dict) -> str:
-    """Map extracted goods info to a ramp category."""
+    """Map extracted goods info to a ramp category (deterministic fallback)."""
     if ext["goods_type"] == "perishable":
         return "perishable"          # cold chain always wins
     if ext["unit"] == "parcels":
@@ -324,7 +328,7 @@ def _category(ext: dict) -> str:
 
 
 def choose_ramp(ext: dict, ramp_status: list[dict]) -> str:
-    """Pick the freest ramp in the correct category (most queue-friendly)."""
+    """Deterministic fallback: freest ramp in the correct category."""
     candidates = RAMP_CATEGORIES[_category(ext)]
     status = {r["ramp"]: r for r in ramp_status}
 
@@ -336,9 +340,62 @@ def choose_ramp(ext: dict, ramp_status: list[dict]) -> str:
     return min(candidates, key=rank)
 
 
-def decide(msg: dict) -> tuple[str, dict]:
+DECISION_PROMPT = (
+    "You are a logistics dispatcher assigning ONE inbound truck to exactly one "
+    "of 8 unloading ramps (R01-R08). Apply these rules strictly:\n"
+    "- R01, R02: parcel lanes — for unit=parcels (UNLESS perishable).\n"
+    "- R03, R04: standard lanes — normal pallets, count <= 32.\n"
+    "- R05, R06: heavy lanes — primarily goods_type=oversized; may also take "
+    "normal pallets (<= 32).\n"
+    "- R07: cold chain — goods_type=perishable MUST go here (mandatory, this "
+    "beats every other rule); may also take normal pallets (<= 32).\n"
+    "- R08: double-truck lane — ONLY unit=pallets with count > 32.\n"
+    "Precedence when several rules apply: perishable -> R07; else pallets with "
+    "count>32 -> R08; else oversized -> R05/R06; else parcels -> R01/R02; else "
+    "pallets(<=32) -> R03/R04.\n"
+    "Among the ramps allowed for the truck, PREFER one whose status is 'free'; "
+    "if several are free pick the shortest queue_length; if none is free pick "
+    "the shortest queue_length. Output ONLY one compact JSON object, no "
+    'markdown: {"assigned_ramp": "R0X"}.\n'
+)
+
+
+def build_decision_prompt(ext: dict, ramp_status: list[dict]) -> str:
+    """Assemble the ramp rules + this truck's goods info + live ramp status."""
+    goods = {
+        "unit": ext.get("unit"),
+        "parcel_count": ext.get("parcel_count"),
+        "goods_type": ext.get("goods_type"),
+    }
+    return (
+        f"{DECISION_PROMPT}\n"
+        f"TRUCK GOODS:\n{json.dumps(goods)}\n\n"
+        f"RAMP STATUS:\n{json.dumps(ramp_status)}\n"
+    )
+
+
+def parse_ramp(reply: str) -> str:
+    """Pull a valid ramp id (R01-R08) out of the model reply, else ''."""
+    data = _first_json(reply)
+    ramp = str(data.get("assigned_ramp") or "").upper()
+    if ramp in ALL_RAMPS:
+        return ramp
+    m = re.search(r"\bR0[1-8]\b", reply.upper())
+    return m.group(0) if m else ""
+
+
+def choose_ramp_ai(ext: dict, ramp_status: list[dict], *, claude_fn=_claude) -> str:
+    """Let the model assign the ramp; fall back to the deterministic rule if it
+    returns nothing usable."""
+    ramp = parse_ramp(claude_fn(build_decision_prompt(ext, ramp_status)))
+    if ramp:
+        return ramp
+    return choose_ramp(ext, ramp_status)
+
+
+def decide(msg: dict, *, claude_fn=_claude) -> tuple[str, dict]:
     """Return (endpoint_path, payload) for a truck message."""
-    ext = extract_truck(msg)
+    ext = extract_truck(msg, claude_fn=claude_fn)
     truck_id = msg.get("truck_id", "")
 
     payload = {
@@ -353,7 +410,8 @@ def decide(msg: dict) -> tuple[str, dict]:
     if ext["has_damage"]:
         return "/reject-truck", payload
 
-    payload["assigned_ramp"] = choose_ramp(ext, msg.get("ramp_status", []))
+    payload["assigned_ramp"] = choose_ramp_ai(
+        ext, msg.get("ramp_status", []), claude_fn=claude_fn)
     return "/assign-ramp", payload
 
 

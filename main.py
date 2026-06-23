@@ -41,7 +41,7 @@ WS_URL = "wss://truckgenerator-production.up.railway.app/ws?team_id={team_id}"
 
 # Local `claude` CLI (uses your Claude subscription) — the extraction model.
 CLAUDE_BIN = "claude"
-CLAUDE_MODEL = "sonnet"
+CLAUDE_MODEL = "opus"
 CLAUDE_TIMEOUT = 120
 
 # Scratch dir for downloaded audio/photo assets.
@@ -184,8 +184,7 @@ EXTRACT_PROMPT = (
     "You extract structured logistics data about ONE inbound truck from its "
     "noisy documentation. You are given up to three signals: a supplier EMAIL, "
     "a speech-to-text TRANSCRIPT of an audio message, and a DESCRIPTION of a "
-    "parcel photo. Any of them may be empty, multilingual (German, French, "
-    "Italian, Spanish, English), contain typos/accents and irrelevant "
+    "parcel photo. The audio description is the least reliable data source. Any of them may be empty, multilingual, contain typos/accents and irrelevant "
     "small-talk which you MUST ignore. Combine the signals; if they conflict, "
     'prefer the most specific value. Convert spoken number words to digits '
     '(e.g. German "vierunddreissig" = 34). Output ONLY one compact JSON '
